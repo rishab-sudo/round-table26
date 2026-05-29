@@ -34,8 +34,8 @@ body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.35),
-    rgba(255,255,255,0.5)
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0.25)
   );
 }
 
@@ -82,7 +82,7 @@ body {
 }
 
 .bannerHeading p {
-  font-size: 24px;
+  font-size: 20px;
   color: #333;
   font-weight: 500;
 }
@@ -106,7 +106,7 @@ body {
 .formTitle h2 {
   font-size: 32px;
   margin-bottom: 8px;
-  font-weight: 700;
+  font-weight: 600;
 
   background: linear-gradient(
     90deg,
@@ -119,7 +119,25 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.inputBox select {
+  width: 100%;
+  height: 62px;
+  border: none;
+  outline: none;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.9);
+  padding: 0 20px;
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
 
+.inputBox select:focus {
+  border-color: #25176e;
+  box-shadow: 0 0 0 4px rgba(37,23,110,0.08);
+}
 .formTitle p {
   color: #555;
   font-size: 15px;
@@ -257,13 +275,13 @@ body {
 
 @media (max-width: 768px) {
   .homeBanner {
-    padding: 50px 20px 80px;
+    padding: 50px 25px 80px;
   }
   .homeBanner {
   width: 100%;
   min-height: fit-content;
   position: relative;
-  background-image: url("../assets/round-table-bg.png");
+  background-image: url("../assets/round-table-mobile-bg.jpeg");
   background-position: center;
   background-size: c;
   background-repeat: no-repeat;

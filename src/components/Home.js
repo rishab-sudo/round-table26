@@ -1,17 +1,17 @@
-// Home.js
-
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import "./Home.css";
 
 const Home = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    mobile: "",
-    subject: "",
-    message: "",
+    tablerName: "",
+    tableNumber: "",
+    spouseName: "",
+    circleNumber: "",
+    travellingKids: "",
+    childrenDetails: "",
+    travellingMaid: "",
+    chairmanMessage: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -63,52 +63,52 @@ const Home = () => {
   const validateForm = () => {
     let newErrors = {};
 
-    const emailRegex =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const mobileRegex = /^[0-9]{10}$/;
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName =
-        "First name is required";
+    if (!formData.tablerName.trim()) {
+      newErrors.tablerName =
+        "Tabler name is required";
     }
 
-    if (!formData.lastName.trim()) {
-      newErrors.lastName =
-        "Last name is required";
+    if (!formData.tableNumber.trim()) {
+      newErrors.tableNumber =
+        "Table number is required";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (
-      !emailRegex.test(formData.email)
+    if (!formData.spouseName.trim()) {
+      newErrors.spouseName =
+        "Circler/Spouse name required";
+    }
+
+    if (!formData.circleNumber.trim()) {
+      newErrors.circleNumber =
+        "Circle number required";
+    }
+
+    if (!formData.travellingKids) {
+      newErrors.travellingKids =
+        "Please select option";
+    }
+
+    if (
+      formData.travellingKids === "Yes" &&
+      !formData.childrenDetails.trim()
     ) {
-      newErrors.email = "Invalid email";
+      newErrors.childrenDetails =
+        "Please enter children details";
     }
 
-    if (!formData.mobile.trim()) {
-      newErrors.mobile =
-        "Mobile number required";
-    } else if (
-      !mobileRegex.test(formData.mobile)
-    ) {
-      newErrors.mobile =
-        "Enter valid 10 digit mobile";
+    if (!formData.travellingMaid) {
+      newErrors.travellingMaid =
+        "Please select option";
     }
 
-    if (!formData.subject.trim()) {
-      newErrors.subject =
-        "Subject is required";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message =
+    if (!formData.chairmanMessage.trim()) {
+      newErrors.chairmanMessage =
         "Message is required";
     }
 
     if (!file) {
       newErrors.image =
-        "Please upload image";
+        "Please upload couple photo";
     }
 
     setErrors(newErrors);
@@ -144,17 +144,19 @@ const Home = () => {
         Swal.fire({
           icon: "success",
           title: "Submitted Successfully",
-          text: "Your proposal request has been sent.",
+          text: "Your details have been submitted.",
           confirmButtonColor: "#25176e",
         });
 
         setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          mobile: "",
-          subject: "",
-          message: "",
+          tablerName: "",
+          tableNumber: "",
+          spouseName: "",
+          circleNumber: "",
+          travellingKids: "",
+          childrenDetails: "",
+          travellingMaid: "",
+          chairmanMessage: "",
         });
 
         setFile(null);
@@ -187,15 +189,14 @@ const Home = () => {
 
         <div className="bannerContent">
           <div className="bannerHeading">
-            <h4>SPONSORSHIP PROPOSAL</h4>
+            <h4>AAGM JAIPUR 2026</h4>
 
             <h1>
-              AAGM Jaipur <span>2026</span>
+              Delegate <span>Registration</span>
             </h1>
 
             <p>
-              Where Leadership, Fellowship &
-              Purpose Converge
+              Fellowship • Fun • Memories • Brotherhood
             </p>
           </div>
 
@@ -207,45 +208,44 @@ const Home = () => {
               <h2>Become A Sponsor</h2>
 
               <p>
-                Fill the details below and our
-                team will connect with you.
+                Kindly fill all details carefully.
               </p>
             </div>
 
             {/* ROW 1 */}
             <div className="formRow">
               <div className="inputBox">
-                <label>First Name</label>
+                <label>Name of Tabler</label>
 
                 <input
                   type="text"
-                  name="firstName"
-                  placeholder="Enter first name"
-                  value={formData.firstName}
+                  name="tablerName"
+                  placeholder="Enter tabler name"
+                  value={formData.tablerName}
                   onChange={handleChange}
                 />
 
-                {errors.firstName && (
+                {errors.tablerName && (
                   <span className="error">
-                    {errors.firstName}
+                    {errors.tablerName}
                   </span>
                 )}
               </div>
 
               <div className="inputBox">
-                <label>Last Name</label>
+                <label>Table Number</label>
 
                 <input
                   type="text"
-                  name="lastName"
-                  placeholder="Enter last name"
-                  value={formData.lastName}
+                  name="tableNumber"
+                  placeholder="Enter table number"
+                  value={formData.tableNumber}
                   onChange={handleChange}
                 />
 
-                {errors.lastName && (
+                {errors.tableNumber && (
                   <span className="error">
-                    {errors.lastName}
+                    {errors.tableNumber}
                   </span>
                 )}
               </div>
@@ -254,37 +254,39 @@ const Home = () => {
             {/* ROW 2 */}
             <div className="formRow">
               <div className="inputBox">
-                <label>Email Address</label>
+                <label>
+                  Name of Circler / Spouse
+                </label>
 
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter email"
-                  value={formData.email}
+                  type="text"
+                  name="spouseName"
+                  placeholder="Enter name"
+                  value={formData.spouseName}
                   onChange={handleChange}
                 />
 
-                {errors.email && (
+                {errors.spouseName && (
                   <span className="error">
-                    {errors.email}
+                    {errors.spouseName}
                   </span>
                 )}
               </div>
 
               <div className="inputBox">
-                <label>Mobile Number</label>
+                <label>Circle Number</label>
 
                 <input
-                  type="tel"
-                  name="mobile"
-                  placeholder="Enter mobile number"
-                  value={formData.mobile}
+                  type="text"
+                  name="circleNumber"
+                  placeholder="Enter circle number"
+                  value={formData.circleNumber}
                   onChange={handleChange}
                 />
 
-                {errors.mobile && (
+                {errors.circleNumber && (
                   <span className="error">
-                    {errors.mobile}
+                    {errors.circleNumber}
                   </span>
                 )}
               </div>
@@ -293,25 +295,101 @@ const Home = () => {
             {/* ROW 3 */}
             <div className="formRow">
               <div className="inputBox">
-                <label>Subject</label>
+                <label>
+                  Travelling With Kids
+                </label>
 
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Enter subject"
-                  value={formData.subject}
+                <select
+                  name="travellingKids"
+                  value={formData.travellingKids}
                   onChange={handleChange}
-                />
+                >
+                  <option value="">
+                    Select Option
+                  </option>
 
-                {errors.subject && (
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+                </select>
+
+                {errors.travellingKids && (
                   <span className="error">
-                    {errors.subject}
+                    {errors.travellingKids}
                   </span>
                 )}
               </div>
 
               <div className="inputBox">
-                <label>Upload Image</label>
+                <label>
+                  Travelling With Maid
+                </label>
+
+                <select
+                  name="travellingMaid"
+                  value={formData.travellingMaid}
+                  onChange={handleChange}
+                >
+                  <option value="">
+                    Select Option
+                  </option>
+
+                  <option value="Yes">
+                    Yes
+                  </option>
+
+                  <option value="No">
+                    No
+                  </option>
+                </select>
+
+                {errors.travellingMaid && (
+                  <span className="error">
+                    {errors.travellingMaid}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* CHILD DETAILS */}
+            {formData.travellingKids ===
+              "Yes" && (
+              <div className="formRow">
+                <div className="inputBox fullWidth">
+                  <label>
+                    Children Details
+                  </label>
+
+                  <textarea
+                    name="childrenDetails"
+                    placeholder="Enter children names & ages"
+                    value={
+                      formData.childrenDetails
+                    }
+                    onChange={handleChange}
+                  ></textarea>
+
+                  {errors.childrenDetails && (
+                    <span className="error">
+                      {
+                        errors.childrenDetails
+                      }
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* PHOTO */}
+            <div className="formRow">
+              <div className="inputBox fullWidth">
+                <label>
+                 Upload One Couple Photo 
+                 </label>
 
                 <input
                   type="file"
@@ -330,18 +408,24 @@ const Home = () => {
             {/* MESSAGE */}
             <div className="formRow">
               <div className="inputBox fullWidth">
-                <label>Message</label>
+                <label>
+               A message for our Area Chairman
+                </label>
 
                 <textarea
-                  name="message"
-                  placeholder="Write your message..."
-                  value={formData.message}
+                  name="chairmanMessage"
+                  placeholder=" Make it funky. Simple answers will invite heavy penalties during Sergeant Act."
+                  value={
+                    formData.chairmanMessage
+                  }
                   onChange={handleChange}
                 ></textarea>
 
-                {errors.message && (
+                {errors.chairmanMessage && (
                   <span className="error">
-                    {errors.message}
+                    {
+                      errors.chairmanMessage
+                    }
                   </span>
                 )}
               </div>
@@ -349,7 +433,7 @@ const Home = () => {
 
             <div className="buttonWrapper">
               <button type="submit">
-                Submit Now
+                Submit Registration
               </button>
             </div>
           </form>
