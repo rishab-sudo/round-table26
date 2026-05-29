@@ -131,7 +131,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        "http://localhost/aagm-mail/send.php",
+        "https://round-table26.vercel.app/send.php",
         {
           method: "POST",
           body: sendData,

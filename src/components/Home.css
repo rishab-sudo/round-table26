@@ -70,7 +70,7 @@ body {
 }
 
 .bannerHeading h1 {
-  font-size: 90px;
+  font-size: 52px;
   line-height: 1;
   color: #25176e;
   font-family: "Cinzel", serif;
@@ -82,7 +82,7 @@ body {
 }
 
 .bannerHeading p {
-  font-size: 28px;
+  font-size: 24px;
   color: #333;
   font-weight: 500;
 }
@@ -104,7 +104,7 @@ body {
 }
 
 .formTitle h2 {
-  font-size: 34px;
+  font-size: 32px;
   margin-bottom: 8px;
   font-weight: 700;
 
