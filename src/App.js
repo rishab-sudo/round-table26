@@ -1,7 +1,7 @@
 import React from "react";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 import './App.css';
 
 import HomeBanner from "./components/Home";
