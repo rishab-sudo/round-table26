@@ -94,7 +94,7 @@ body {
   background: rgba(255,255,255,0.22);
   backdrop-filter: blur(18px);
   border-radius: 32px;
-  padding: 40px;
+  padding:  25px 35px;
   border: 1px solid rgba(255,255,255,0.4);
   box-shadow: 0 15px 45px rgba(0,0,0,0.12);
 }

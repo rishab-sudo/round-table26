@@ -17,18 +17,33 @@ const Home = () => {
   const [errors, setErrors] = useState({});
   const [file, setFile] = useState(null);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+ const handleChange = (e) => {
+  const { name, value } = e.target;
 
+  // 80 character validation
+  if (
+    name === "chairmanMessage" &&
+    value.length > 150
+  ) {
     setErrors({
       ...errors,
-      [e.target.name]: "",
+      chairmanMessage:
+        "Maximum 150 characters allowed",
     });
-  };
 
+    return;
+  }
+
+  setFormData({
+    ...formData,
+    [name]: value,
+  });
+
+  setErrors({
+    ...errors,
+    [name]: "",
+  });
+};
   const handleFile = (e) => {
     const selected = e.target.files[0];
 
@@ -105,7 +120,12 @@ const Home = () => {
       newErrors.chairmanMessage =
         "Message is required";
     }
-
+if (
+  formData.chairmanMessage.length > 180
+) {
+  newErrors.chairmanMessage =
+    "Maximum 150 characters allowed";
+}
     if (!file) {
       newErrors.image =
         "Please upload couple photo";
@@ -364,14 +384,17 @@ const Home = () => {
                     Children Details
                   </label>
 
-                  <textarea
-                    name="childrenDetails"
-                    placeholder="Enter children names & ages"
-                    value={
-                      formData.childrenDetails
-                    }
-                    onChange={handleChange}
-                  ></textarea>
+                 <textarea
+  name="chairmanMessage"
+  maxLength={150}
+  placeholder="Make it funky. Simple answers will invite heavy penalties during Sergeant Act."
+  value={formData.chairmanMessage}
+  onChange={handleChange}
+></textarea>
+
+<div className="charCount">
+  {formData.chairmanMessage.length}/150
+</div>
 
                   {errors.childrenDetails && (
                     <span className="error">
