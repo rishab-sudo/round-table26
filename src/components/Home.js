@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import {
+  FaWhatsapp,
+  FaInstagram,
+} from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./Home.css";
 
@@ -121,7 +125,7 @@ const Home = () => {
         "Message is required";
     }
 if (
-  formData.chairmanMessage.length > 180
+  formData.chairmanMessage.length > 150
 ) {
   newErrors.chairmanMessage =
     "Maximum 150 characters allowed";
@@ -209,14 +213,14 @@ if (
 
         <div className="bannerContent">
           <div className="bannerHeading">
-            <h4>AAGM JAIPUR 2026</h4>
+            <h4>RDB</h4>
 
             <h1>
-              Delegate <span>Registration</span>
+              AAGM <span>2026</span>
             </h1>
 
             <p>
-              Fellowship • Fun • Memories • Brotherhood
+             JAIPUR
             </p>
           </div>
 
@@ -225,11 +229,8 @@ if (
             onSubmit={handleSubmit}
           >
             <div className="formTitle">
-              <h2>Become A Sponsor</h2>
+              <h2>Register Now</h2>
 
-              <p>
-                Kindly fill all details carefully.
-              </p>
             </div>
 
             {/* ROW 1 */}
@@ -384,17 +385,14 @@ if (
                     Children Details
                   </label>
 
-                 <textarea
-  name="chairmanMessage"
-  maxLength={150}
-  placeholder="Make it funky. Simple answers will invite heavy penalties during Sergeant Act."
-  value={formData.chairmanMessage}
-  onChange={handleChange}
-></textarea>
-
-<div className="charCount">
-  {formData.chairmanMessage.length}/150
-</div>
+                  <textarea
+                    name="childrenDetails"
+                    placeholder="Enter children names & ages"
+                    value={
+                      formData.childrenDetails
+                    }
+                    onChange={handleChange}
+                  ></textarea>
 
                   {errors.childrenDetails && (
                     <span className="error">
@@ -461,6 +459,33 @@ if (
             </div>
           </form>
         </div>
+{/* --------------------------------- */}
+        <div className="socialSection">
+  <h3>Connect With Us</h3>
+
+  <div className="socialIcons">
+  
+
+    <a
+      href="https://www.instagram.com/rangdearea8?igsh=MTU0YmhqcmpsenE4NA=="
+      target="_blank"
+      rel="noreferrer"
+      className="instagram"
+    >
+      <FaInstagram className="fab fa-instagram"/>
+    </a>
+
+      <a
+      href="https://wa.me/919999999999"
+      target="_blank"
+      rel="noreferrer"
+      className="whatsapp"
+    >
+      <FaWhatsapp className="fab fa-whatsapp"/>
+    </a>
+    
+  </div>
+</div>
       </section>
     </>
   );

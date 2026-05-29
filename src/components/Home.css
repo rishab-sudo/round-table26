@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   padding: 80px 7%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -59,6 +60,7 @@ body {
 .bannerHeading {
   text-align: center;
   margin-bottom: 55px;
+
 }
 
 .bannerHeading h4 {
@@ -107,6 +109,7 @@ body {
   font-size: 32px;
   margin-bottom: 8px;
   font-weight: 600;
+  text-transform : "uppercase";
 
   background: linear-gradient(
     90deg,
@@ -160,25 +163,24 @@ body {
   text-align: left;
   font-weight: 600;
   margin-bottom: 10px;
-  margin-left:5px;
-  /* color: #25176e; */
-    background: linear-gradient(
+  margin-left: 5px;
+
+  background: linear-gradient(
     90deg,
+    #d35400,
     #25176e,
-    #ff7a00,
-    #ff9a2f
+    #a04000
   );
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  padding-left: 3px;
 }
+
 
 .inputBox input,
 .inputBox textarea {
   width: 100%;
-  border: none;
+  border: none ;
   outline: none;
   border-radius: 18px;
   background: rgba(255,255,255,0.9);
@@ -246,7 +248,7 @@ body {
   border-radius: 16px;
   background: linear-gradient(
     135deg,
-    #25176e,
+    #d35400,
     #ffffff
   );
   color: #25176e;
@@ -260,7 +262,67 @@ body {
 .buttonWrapper button:hover {
   transform: translateY(-3px);
 }
+/* icons */
+/* SOCIAL ICONS */
 
+.socialSection {
+  width: 100%;
+  display: flex;
+flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.socialSection h3{
+
+  background: linear-gradient(
+    90deg,
+    #d35400,
+    #25176e,
+    #a04000
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.socialIcons {
+  margin-top: 2%;
+  display: flex;
+  gap: 16px;
+
+}
+
+.socialIcons a {
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.35);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+  transition: 0.35s ease;
+}
+
+.socialIcons a svg {
+  font-size: 30px;
+  color: #25176e;
+}
+
+.socialIcons a:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.32);
+}
 /* RESPONSIVE */
 
 @media (max-width: 1100px) {
@@ -291,14 +353,17 @@ display: flex;
 }
 
   .bannerLogo {
-    height: 190px;
+    height: 226px;
     left: 8px;
     top: 10px;
   }
 
-  .bannerHeading {
-    margin-bottom: 35px;
-  }
+.bannerHeading {
+padding: 0px !important;
+margin: 0%;
+  margin-bottom: 15px;
+
+}
 
   .bannerHeading h4 {
     font-size: 16px;
@@ -307,13 +372,15 @@ display: flex;
 
   .bannerHeading h1 {
     font-size: 42px;
-    line-height: 1.2;
+   line-height:normal;
+   margin-top: -5.2px;
   }
 
   .bannerHeading p {
     font-size: 17px;
-    line-height: 1.6;
+    line-height:normal;
     padding: 0 10px;
+     margin-top: -7.2px;
   }
 
   .horizontalForm {
@@ -335,6 +402,9 @@ display: flex;
     gap: 18px;
     margin-bottom: 18px;
   }
+.inputBox input {
+  height: 62px;
+}
 
   .inputBox input,
   .inputBox textarea {
