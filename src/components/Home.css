@@ -23,7 +23,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 120px 7%;
+  padding: 80px 7%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -259,6 +259,18 @@ body {
   .homeBanner {
     padding: 50px 20px 80px;
   }
+  .homeBanner {
+  width: 100%;
+  min-height: fit-content;
+  position: relative;
+  background-image: url("../assets/round-table-bg.png");
+  background-position: center;
+  background-size: c;
+  background-repeat: no-repeat;
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
   .bannerLogo {
     height: 190px;
