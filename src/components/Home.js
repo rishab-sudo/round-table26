@@ -180,7 +180,7 @@ const Home = () => {
         <div className="bannerOverlay"></div>
 
         <img
-          src="/logo.png"
+          src={require("../assets/round-logo.png")}
           alt=""
           className="bannerLogo"
         />
