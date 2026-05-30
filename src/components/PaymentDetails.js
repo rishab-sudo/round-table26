@@ -7,7 +7,7 @@ const PaymentDetails = () => {
   const location = useLocation();
 
   const formData = location.state?.formData;
-  const file = location.state?.file;
+
 
   // Agar direct URL hit kare to home par bhej do
   if (!formData) {
