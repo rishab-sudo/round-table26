@@ -1,0 +1,235 @@
+
+/* PaymentDetails.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.paymentPage{
+  min-height:100vh;
+  padding:60px 20px;
+  background:linear-gradient(
+    135deg,
+    #f8f7ff,
+    #fff6ef
+  );
+  font-family:"Poppins",sans-serif;
+}
+
+.paymentPage h1{
+  text-align:center;
+  margin-bottom:35px;
+  font-size:42px;
+  font-weight:700;
+
+  background:linear-gradient(
+    90deg,
+    #25176e,
+    #ff7a00
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* SUMMARY */
+
+.summaryBox{
+  max-width:1100px;
+  margin:auto;
+  background:rgba(255,255,255,0.9);
+  border-radius:28px;
+  padding:35px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  border:1px solid rgba(255,255,255,0.6);
+}
+
+.summaryBox p{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:16px 0;
+  border-bottom:1px solid #ececec;
+
+  font-size:15px;
+  color:#333;
+}
+
+.summaryBox p:last-child{
+  border-bottom:none;
+}
+
+.summaryBox strong{
+  color:#25176e;
+  font-weight:700;
+}
+
+/* PAYMENT BOX */
+
+.paymentBox{
+  max-width:1100px;
+  margin:35px auto 0;
+
+  background:rgba(255,255,255,0.9);
+
+  border-radius:28px;
+  padding:35px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:40px;
+
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.paymentBox .left{
+  flex:1;
+}
+
+.paymentBox .left h2{
+  font-size:32px;
+  color:#25176e;
+  margin-bottom:15px;
+}
+
+.paymentBox .left p{
+  color:#555;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.paymentBox .right{
+  width:260px;
+  height:260px;
+  background:#fff;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ff7a00;
+}
+
+.paymentBox .right img{
+  width:220px;
+  height:220px;
+  object-fit:contain;
+}
+
+/* UPLOAD SECTION */
+
+.uploadSS{
+  max-width:1100px;
+  margin:30px auto 0;
+
+  background:#fff;
+  border-radius:24px;
+  padding:28px;
+
+  box-shadow:0 12px 35px rgba(0,0,0,0.08);
+}
+
+.uploadSS label{
+  display:block;
+  margin-bottom:12px;
+  color:#25176e;
+  font-weight:700;
+  font-size:16px;
+}
+
+.uploadSS input{
+  width:100%;
+  height:60px;
+  padding:14px;
+  border-radius:16px;
+  border:2px solid #ececec;
+  background:#fafafa;
+  cursor:pointer;
+}
+
+/* BUTTON */
+
+.paymentPage button{
+  display:block;
+  margin:35px auto 0;
+
+  width:320px;
+  height:62px;
+
+  border:none;
+  border-radius:18px;
+
+  background:linear-gradient(
+    135deg,
+    #25176e,
+    #ff7a00
+  );
+
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.35s ease;
+
+  box-shadow:0 12px 30px rgba(37,23,110,0.25);
+}
+
+.paymentPage button:hover{
+  transform:translateY(-4px);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .paymentPage{
+    padding:35px 15px;
+  }
+
+  .paymentPage h1{
+    font-size:30px;
+  }
+
+  .summaryBox{
+    padding:20px;
+  }
+
+  .summaryBox p{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:5px;
+    font-size:14px;
+  }
+
+  .paymentBox{
+    flex-direction:column;
+    text-align:center;
+    padding:25px;
+  }
+
+  .paymentBox .left h2{
+    font-size:24px;
+  }
+
+  .paymentBox .right{
+    width:220px;
+    height:220px;
+  }
+
+  .paymentBox .right img{
+    width:180px;
+    height:180px;
+  }
+
+  .paymentPage button{
+    width:100%;
+  }
+}
+

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -7,16 +8,23 @@ import Swal from "sweetalert2";
 import "./Home.css";
 
 const Home = () => {
-  const [formData, setFormData] = useState({
-    tablerName: "",
-    tableNumber: "",
-    spouseName: "",
-    circleNumber: "",
-    travellingKids: "",
-    childrenDetails: "",
-    travellingMaid: "",
-    chairmanMessage: "",
-  });
+  const navigate = useNavigate();
+  
+
+
+const [formData, setFormData] = useState({
+  tablerName: "",
+  tableNumber: "",
+  spouseName: "",
+  circleNumber: "",
+  travellingKids: "",
+  noOfChildren: "",
+  child1Age: "",
+  child2Age: "",
+  child3Age: "",
+  travellingMaid: "",
+  chairmanMessage: "",
+});
 
   const [errors, setErrors] = useState({});
   const [file, setFile] = useState(null);
@@ -101,19 +109,40 @@ const Home = () => {
       newErrors.circleNumber =
         "Circle number required";
     }
+if (!formData.travellingKids) {
+  newErrors.travellingKids =
+    "Please select option";
+}
+if (formData.travellingKids === "Yes") {
+  if (!formData.noOfChildren) {
+    newErrors.noOfChildren =
+      "Select number of children";
+  }
 
-    if (!formData.travellingKids) {
-      newErrors.travellingKids =
-        "Please select option";
-    }
+  if (
+    formData.noOfChildren >= 1 &&
+    !formData.child1Age
+  ) {
+    newErrors.child1Age =
+      "Enter Child 1 age";
+  }
 
-    if (
-      formData.travellingKids === "Yes" &&
-      !formData.childrenDetails.trim()
-    ) {
-      newErrors.childrenDetails =
-        "Please enter children details";
-    }
+  if (
+    formData.noOfChildren >= 2 &&
+    !formData.child2Age
+  ) {
+    newErrors.child2Age =
+      "Enter Child 2 age";
+  }
+
+  if (
+    formData.noOfChildren >= 3 &&
+    !formData.child3Age
+  ) {
+    newErrors.child3Age =
+      "Enter Child 3 age";
+  }
+}
 
     if (!formData.travellingMaid) {
       newErrors.travellingMaid =
@@ -125,7 +154,7 @@ const Home = () => {
         "Message is required";
     }
 if (
-  formData.chairmanMessage.length > 150
+  formData.chairmanMessage.trim().length > 150
 ) {
   newErrors.chairmanMessage =
     "Maximum 150 characters allowed";
@@ -140,66 +169,18 @@ if (
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    const sendData = new FormData();
-
-    Object.keys(formData).forEach((key) => {
-      sendData.append(key, formData[key]);
-    });
-
-    sendData.append("image", file);
-
-    try {
-      const response = await fetch(
-        "https://round-table26.vercel.app/send.php",
-        {
-          method: "POST",
-          body: sendData,
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        Swal.fire({
-          icon: "success",
-          title: "Submitted Successfully",
-          text: "Your details have been submitted.",
-          confirmButtonColor: "#25176e",
-        });
-
-        setFormData({
-          tablerName: "",
-          tableNumber: "",
-          spouseName: "",
-          circleNumber: "",
-          travellingKids: "",
-          childrenDetails: "",
-          travellingMaid: "",
-          chairmanMessage: "",
-        });
-
-        setFile(null);
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Something went wrong",
-          text: data.message,
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Server Error",
-        text: "Unable to send form",
-      });
-    }
-  };
-
+  navigate("/payment-details", {
+    state: {
+      formData,
+      file,
+    },
+  });
+};
   return (
     <>
       <section className="homeBanner">
@@ -314,96 +295,119 @@ if (
             </div>
 
             {/* ROW 3 */}
-            <div className="formRow">
-              <div className="inputBox">
-                <label>
-                  Travelling With Kids
-                </label>
+        <div className="formRow">
+  <div className="inputBox">
+    <label>Travelling With Kids</label>
 
-                <select
-                  name="travellingKids"
-                  value={formData.travellingKids}
-                  onChange={handleChange}
-                >
-                  <option value="">
-                    Select Option
-                  </option>
+    <select
+      name="travellingKids"
+      value={formData.travellingKids}
+      onChange={handleChange}
+    >
+      <option value="">Select Option</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
 
-                  <option value="Yes">
-                    Yes
-                  </option>
-
-                  <option value="No">
-                    No
-                  </option>
-                </select>
-
-                {errors.travellingKids && (
-                  <span className="error">
-                    {errors.travellingKids}
-                  </span>
-                )}
-              </div>
-
-              <div className="inputBox">
-                <label>
-                  Travelling With Maid
-                </label>
-
-                <select
-                  name="travellingMaid"
-                  value={formData.travellingMaid}
-                  onChange={handleChange}
-                >
-                  <option value="">
-                    Select Option
-                  </option>
-
-                  <option value="Yes">
-                    Yes
-                  </option>
-
-                  <option value="No">
-                    No
-                  </option>
-                </select>
-
-                {errors.travellingMaid && (
-                  <span className="error">
-                    {errors.travellingMaid}
-                  </span>
-                )}
-              </div>
-            </div>
+    {errors.travellingKids && (
+      <span className="error">
+        {errors.travellingKids}
+      </span>
+    )}
+  </div>
+</div>
 
             {/* CHILD DETAILS */}
-            {formData.travellingKids ===
-              "Yes" && (
-              <div className="formRow">
-                <div className="inputBox fullWidth">
-                  <label>
-                    Children Details
-                  </label>
+{/* CHILD DETAILS */}
+{formData.travellingKids === "Yes" && (
+  <>
+    <div className="formRow">
+      <div className="inputBox">
+        <label>No. of Children</label>
 
-                  <textarea
-                    name="childrenDetails"
-                    placeholder="Enter children names & ages"
-                    value={
-                      formData.childrenDetails
-                    }
-                    onChange={handleChange}
-                  ></textarea>
+        <select
+          name="noOfChildren"
+          value={formData.noOfChildren}
+          onChange={handleChange}
+        >
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
 
-                  {errors.childrenDetails && (
-                    <span className="error">
-                      {
-                        errors.childrenDetails
-                      }
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
+      {formData.noOfChildren >= 1 && (
+        <div className="inputBox">
+          <label>Child 1 Age</label>
+
+          <input
+            type="number"
+            name="child1Age"
+            value={formData.child1Age}
+            onChange={handleChange}
+            placeholder="Age"
+          />
+        </div>
+      )}
+    </div>
+
+    {formData.noOfChildren >= 2 && (
+      <div className="formRow">
+        <div className="inputBox">
+          <label>Child 2 Age</label>
+
+          <input
+            type="number"
+            name="child2Age"
+            value={formData.child2Age}
+            onChange={handleChange}
+            placeholder="Age"
+          />
+        </div>
+      </div>
+    )}
+
+    {formData.noOfChildren >= 3 && (
+      <div className="formRow">
+        <div className="inputBox">
+          <label>Child 3 Age</label>
+
+          <input
+            type="number"
+            name="child3Age"
+            value={formData.child3Age}
+            onChange={handleChange}
+            placeholder="Age"
+          />
+        </div>
+      </div>
+    )}
+  </>
+)}
+
+{/* MAID FIELD AFTER CHILDREN */}
+<div className="formRow">
+  <div className="inputBox">
+    <label>Travelling With Maid</label>
+
+    <select
+      name="travellingMaid"
+      value={formData.travellingMaid}
+      onChange={handleChange}
+    >
+      <option value="">Select Option</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    {errors.travellingMaid && (
+      <span className="error">
+        {errors.travellingMaid}
+      </span>
+    )}
+  </div>
+</div>
 
             {/* PHOTO */}
             <div className="formRow">
